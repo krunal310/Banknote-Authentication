@@ -31,7 +31,7 @@ def predict():
         in: query
         type: number
         required: true
-      - name: curtosis
+      - name: kurtosis
         in: query
         type: number
         required: true
@@ -46,10 +46,10 @@ def predict():
     """
     variance=request.args.get('variance')
     skewness=request.args.get('skewness')
-    curtosis=request.args.get('curtosis')
+    kurtosis=request.args.get('kurtosis')
     entropy=request.args.get('entropy')
-    prediction=np.argmax(model.predict([[float(variance),float(skewness),float(curtosis),float(entropy)]]), axis=-1) 
+    prediction=np.argmax(model.predict([[float(variance),float(skewness),float(kurtosis),float(entropy)]]), axis=-1) 
     return "Predicted Class : "+ str(prediction[0])
-    
+
 if __name__=='__main__':
     app.run()
